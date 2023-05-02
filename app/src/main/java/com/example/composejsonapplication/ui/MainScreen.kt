@@ -30,7 +30,8 @@ fun MainScreen() {
             AppBar(
                 scope = scope,
                 scaffoldState = scaffoldState,
-                targetScreen = targetScreen.value
+                targetScreen = targetScreen.value,
+                navController = navController
             )
 
         },

@@ -5,6 +5,7 @@ import com.example.composejsonapplication.data.model.comments.CommentsModel
 import com.example.composejsonapplication.data.model.photos.PhotosModel
 import com.example.composejsonapplication.data.model.posts.PostsModel
 import com.example.composejsonapplication.data.model.todos.TodosModel
+import com.example.composejsonapplication.data.model.users.UsersItemModel
 import com.example.composejsonapplication.data.model.users.UsersModel
 
 interface Repository {
@@ -14,4 +15,6 @@ interface Repository {
     suspend fun getPosts(): PostsModel
     suspend fun getTodos(): TodosModel
     suspend fun getUsers(): UsersModel
+    suspend fun getUserById(userId: String): UsersItemModel
+
 }

@@ -8,5 +8,6 @@ object ApiDetails {
     const val Posts_ENDPOINT = "posts"
     const val Todos_ENDPOINT = "todos"
     const val Users_ENDPOINT = "users"
+    const val UserDetails_ENDPOINT="/users/{userId}"
 
 }

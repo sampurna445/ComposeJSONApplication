@@ -2,7 +2,6 @@ package com.example.composejsonapplication.ui.Navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,7 +20,10 @@ fun NavGraph(navController: NavHostController,
              targetScreen: MutableState<NavigationItem>){
     NavHost(navController, startDestination = NavigationItem.Login.route ){
 
-        addLoginScreen(navController, this)
+        addLoginScreen(navController,
+            this,
+            targetScreen
+        )
 
 
         composable(NavigationItem.Posts.route){
@@ -63,9 +65,11 @@ fun NavGraph(navController: NavHostController,
 
 private fun addLoginScreen(
     navController: NavHostController,
-    navGraphBuilder: NavGraphBuilder
+    navGraphBuilder: NavGraphBuilder,
+    targetScreen: MutableState<NavigationItem>
 ) {
     navGraphBuilder.composable(route = NavigationItem.Login.route) {
+        targetScreen.value = NavigationItem.Login
         LoginScreen(
             navigateToPosts = {
                 navController.navigate(NavigationItem.Posts.route)

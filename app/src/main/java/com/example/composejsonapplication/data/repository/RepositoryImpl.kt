@@ -23,4 +23,5 @@ class RepositoryImpl @Inject constructor(
     override suspend fun getTodos(): TodosModel = apiRequest.getTodos()
 
     override suspend fun getUsers(): UsersModel = apiRequest.getUsers()
+    override suspend fun getUserById(userId: String)=apiRequest.getUserById(userId)
 }

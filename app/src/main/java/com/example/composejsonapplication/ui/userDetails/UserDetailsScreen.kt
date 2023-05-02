@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -26,162 +27,46 @@ import com.example.composejsonapplication.ui.users.UsersViewModel
 fun UserDetailsScreen(
     userId: Long
 ) {
-    val usersDetailModel = hiltViewModel<UsersViewModel>()
-    val users by usersDetailModel.users.collectAsState()
+    val usersDetailViewModel = hiltViewModel<UserDetailsViewModel>()
+    usersDetailViewModel.getUserById(userId = userId.toString())
+
+    val userDetails by usersDetailViewModel.userDetail.collectAsState()
 
 
 
 
 
-    val scrollState = rememberScrollState()
-    Surface(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxWidth()
-    ) {
-        Column(modifier = Modifier.verticalScroll(scrollState)) {
-            UserDetailsContent(users)
-        }
-    }
-}
-
-@Composable
-fun UserDetailsContent(usersDetails: ArrayList<UsersItemModel>) {
-
-/*
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ) {
-        Text(
-            color = Color(0xFF6F7FF7),
-            text = usersDetails.,
-            fontWeight = FontWeight.Bold,
-            fontSize = 40.sp
-        )
-    }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 10.dp)
-            .background(Color.White),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.Center
-    ) {
-        AsyncImage(
-            model = mealDetails.strMealThumb,
-            contentDescription = "My Image",
+    Column() {
+        Card(
             modifier = Modifier
-                .size(175.dp)
-                .align(Alignment.CenterVertically)
-        )
-    }
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White),
-        horizontalArrangement = Arrangement.Center
-    ) {
-        Column(
-            modifier = Modifier
-                .weight(.75f)
-                .padding(start = 20.dp, top = 10.dp, bottom = 10.dp)
-                .background(
-                    color = Color(0xFF6F7FF7),
-                    shape = RoundedCornerShape(16.dp)
-                ),
-            verticalArrangement = Arrangement.Center
+                .fillMaxWidth()
+                .padding(16.dp),
+            elevation = 8.dp
         ) {
-            mealDetails.strArea?.let {
-                Text(
-                    text = it,
-                    style = MaterialTheme.typography.h6,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Text(text = "Name: ${userDetails.name}", fontWeight = FontWeight.Bold)
+                Text(text = "Username: ${userDetails.username}")
+                Text(text = "Email: ${userDetails.email}")
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Address:", fontWeight = FontWeight.Bold)
+                Text(text = "${userDetails.address?.street}, ${userDetails.address?.suite}")
+                Text(text = "${userDetails.address?.city}, ${userDetails.address?.zipcode}")
+                Text(text = "Lat: ${userDetails.address?.geo?.lat}, Lng: ${userDetails.address?.geo?.lng}")
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Phone: ${userDetails.phone}")
+                Text(text = "Website: ${userDetails.website}")
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(text = "Company:", fontWeight = FontWeight.Bold)
+                Text(text = "${userDetails.company?.name}")
+                Text(text = "${userDetails.company?.catchPhrase}")
+                Text(text = "${userDetails.company?.bs}")
             }
         }
 
-        Column(
-            modifier = Modifier
-                .weight(.75f)
-                .padding(start = 20.dp, end = 20.dp, top = 10.dp, bottom = 10.dp)
-                .background(
-                    color = Color(0xFF6F7FF7),
-                    shape = RoundedCornerShape(16.dp)
-                ),
-            verticalArrangement = Arrangement.Center
-        ) {
-            mealDetails.strCategory?.let {
-                Text(
-                    text = it,
-                    style = MaterialTheme.typography.h6,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-        }
+
+
     }
-
-
-    Row(
-        modifier = Modifier
-            .background(Color.White)
-            .padding(start = 15.dp, bottom = 20.dp, top = 5.dp)
-            .fillMaxWidth(),
-    ) {
-        Text(
-            text = "Ingredients",
-            style = MaterialTheme.typography.h6,
-            color = Color(0xFF6F7FF7),
-            fontWeight = FontWeight.Bold
-        )
-    }
-
-    Row(
-        modifier = Modifier
-            .background(Color.White)
-            .fillMaxWidth()
-    ) {
-        IngredientsList(mealIngredients = populateIngredients(mealDetails))
-    }
-
-    Row(
-        modifier = Modifier
-            .background(Color.White)
-            .padding(start = 15.dp, bottom = 5.dp, top = 15.dp)
-            .fillMaxWidth()
-    ) {
-        Text(
-            text = "Instructions",
-            style = MaterialTheme.typography.h6,
-            color = Color(0xFF6F7FF7),
-            fontWeight = FontWeight.Bold
-        )
-    }
-
-    Row(
-        modifier = Modifier
-            .background(Color.White)
-            .padding(bottom = 20.dp, start = 15.dp, end = 15.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.Center
-    ) {
-        mealDetails.strInstructions?.let {
-            Text(
-                text = it,
-                style = MaterialTheme.typography.caption
-            )
-        }
-    }
-
-
-*/
 
 }
