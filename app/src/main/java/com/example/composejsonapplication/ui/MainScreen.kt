@@ -19,7 +19,7 @@ fun MainScreen() {
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     val scope = rememberCoroutineScope()
     val navController = rememberNavController()
-    val targetScreen = rememberSaveable { mutableStateOf(NavigationItem.Posts) }
+    val targetScreen = rememberSaveable { mutableStateOf(NavigationItem.LoginScreen) }
 
 
     Scaffold(

@@ -8,6 +8,7 @@ val Purple700 = Color(0xFFAA00FF)
 val Teal200 = Color(0xFF03DAC5)
 
 val AppbarColor = Color(0xffE91E63)
+val LoginButtons = Color(0xFFF4C2C2)
 
 
 

@@ -21,11 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import androidx.navigation.Navigation
 import androidx.navigation.compose.currentBackStackEntryAsState
-import kotlinx.coroutines.CoroutineScope
 import com.example.composejsonapplication.R
-import com.example.composejsonapplication.ui.Navigation.NavigationItem
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
@@ -42,7 +40,9 @@ fun  NavDrawer(
         NavigationItem.Users,
         NavigationItem.Photos,
         NavigationItem.Todos,
-        NavigationItem.Logout
+        NavigationItem.Logout,
+        NavigationItem.SignUpScreen,
+        NavigationItem.LoginScreen
     )
     Column (modifier = Modifier
         .background(color = Color.White)
@@ -149,5 +149,5 @@ fun NavDrawerItem(
 }
 
 private fun popUpToLogin(navController: NavHostController) {
-    navController.popBackStack(NavigationItem.Login.route, inclusive = false)
+    navController.popBackStack(NavigationItem.LoginScreen.route, inclusive = false)
 }

@@ -2,7 +2,7 @@ package com.example.composejsonapplication.ui.Navigation
 
 import com.example.composejsonapplication.R
 enum class NavigationItem(var route: String,var icon : Int,var title:String, var maintab:Boolean){
-     Login("login", R.drawable.icon_posts,"Login",  false),
+     LoginScreen("login", R.drawable.icon_posts,"Login",  false),
      SignUpScreen("signUp", R.drawable.icon_posts, "SignUp", false),
      Posts("posts", R.drawable.icon_posts,"Posts", true),
      Comments("comments", R.drawable.icon_comments,"Comments",true),
