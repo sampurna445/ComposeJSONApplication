@@ -5,6 +5,7 @@ import com.example.composejsonapplication.data.model.users.*
 import com.example.composejsonapplication.data.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.*
@@ -33,6 +34,7 @@ class UsersViewModelTest {
 
     @After
     fun tearDown() {
+        Dispatchers.resetMain()
     }
 
     @Test
